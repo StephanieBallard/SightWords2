@@ -23,9 +23,13 @@ class SightWordsMainViewController: UIViewController {
     private let sightWordsTextLabel: UILabel = {
         let label = UILabel()
         label.text = "Sight Words"
-        label.textColor = #colorLiteral(red: 0.5490196078, green: 0.5058823529, blue: 0.9647058824, alpha: 1)
+        label.textColor = #colorLiteral(red: 0.5843137255, green: 0.2784313725, blue: 0.9254901961, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.init(name: "Futura", size: 50)
+        label.layer.borderColor = UIColor.white.cgColor
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = 12
+        
         return label
     }()
     
@@ -68,18 +72,18 @@ class SightWordsMainViewController: UIViewController {
         
         view.addSubviews(subviews: curveView, sightWordsTextLabel, directionsTextLabel, comeBackTextLabel, underLineUIView)
 
-        view.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.9647058824, blue: 1, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.8196078431, blue: 1, alpha: 1)
         
-        curveView.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.9647058824, blue: 1, alpha: 1)
+        curveView.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.8196078431, blue: 1, alpha: 1)
         curveView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: UIScreen.main.bounds.height * 0.8)
         
-        sightWordsTextLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 20, height: 70)
+        sightWordsTextLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 50, paddingLeft: 40, paddingRight: 40, height: 80)
         
-        directionsTextLabel.anchor(top: sightWordsTextLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 130, paddingLeft: 20, paddingRight: 20, height: 25)
+        directionsTextLabel.anchor(top: sightWordsTextLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 130, paddingLeft: 20, paddingRight: 20, height: 25)
         
-        comeBackTextLabel.anchor(top: directionsTextLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20, height: 25)
+        comeBackTextLabel.anchor(top: directionsTextLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20, height: 25)
         
-        underLineUIView.anchor(top: comeBackTextLabel.bottomAnchor, left: comeBackTextLabel.leftAnchor, right: comeBackTextLabel.rightAnchor, paddingTop: 4, paddingLeft: 20, paddingRight: 20, height: 2)
+        underLineUIView.anchor(top: comeBackTextLabel.bottomAnchor, left: comeBackTextLabel.safeAreaLayoutGuide.leftAnchor, right: comeBackTextLabel.safeAreaLayoutGuide.rightAnchor, paddingTop: 6, paddingLeft: 20, paddingRight: 20, height: 2)
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -96,29 +100,28 @@ class SightWordsMainViewController: UIViewController {
 
 extension SightWordsMainViewController {
     private func configureHierarchy() {
-        collectionView = UICollectionView(frame: .init(origin: CGPoint(x: 38, y: 350), size: CGSize(width: 300, height: 150)), collectionViewLayout: createLayout())
+        collectionView = UICollectionView(frame: .init(origin: CGPoint(x: 42, y: 380), size: CGSize(width: 300, height: 150)), collectionViewLayout: createLayout())
         view.addSubview(collectionView)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = #colorLiteral(red: 0.5490196078, green: 0.5058823529, blue: 0.9647058824, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.2784313725, blue: 0.9254901961, alpha: 1)
         collectionView.isScrollEnabled = false
-        collectionView.layer.borderColor = #colorLiteral(red: 0.5490196078, green: 0.5058823529, blue: 0.9647058824, alpha: 1).cgColor
+        collectionView.layer.borderColor = #colorLiteral(red: 0.5836093415, green: 0.279776614, blue: 0.9270977454, alpha: 1).cgColor
     }
     
     private func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SetOfWords> { (cell: UICollectionViewListCell, indexPath: IndexPath, identifier: SetOfWords) in
             var content = cell.defaultContentConfiguration()
             content.text = identifier.name
-            content.textProperties.font = UIFont(name: "Futura", size: 20)!
+            content.textProperties.font = UIFont(name: "Futura", size: 22)!
             content.textProperties.alignment = .center
-            content.textProperties.color = #colorLiteral(red: 0.5490196078, green: 0.5058823529, blue: 0.9647058824, alpha: 1)
+            content.textProperties.color = #colorLiteral(red: 0.5843137255, green: 0.2784313725, blue: 0.9254901961, alpha: 1)
             var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
-            backgroundConfiguration.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.9647058824, blue: 1, alpha: 1)
+            backgroundConfiguration.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.8196078431, blue: 1, alpha: 1)
             backgroundConfiguration.cornerRadius = 12
             cell.layer.borderWidth = 2
             cell.layer.borderColor = UIColor.white.cgColor
             cell.layer.cornerRadius = 12
-            cell.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.9647058824, blue: 1, alpha: 1)
-            cell.contentView.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.9647058824, blue: 1, alpha: 1)
+            cell.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.8196078431, blue: 1, alpha: 1)
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.8196078431, blue: 1, alpha: 1)
             cell.contentView.layer.borderWidth = 2
             cell.backgroundConfiguration = backgroundConfiguration
             cell.contentConfiguration = content

@@ -11,7 +11,7 @@ class CurveView: UIView {
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
-            context.setFillColor(#colorLiteral(red: 0.5490196078, green: 0.5058823529, blue: 0.9647058824, alpha: 1))
+            context.setFillColor(#colorLiteral(red: 0.5843137255, green: 0.2784313725, blue: 0.9254901961, alpha: 1))
             
             let curveHeight: CGFloat = 140
             let leadingCurvePoint = CGPoint(x: 0, y: curveHeight / 2.0)
